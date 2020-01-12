@@ -1,0 +1,10 @@
+((200 / 1.4) * 3 + 300) * 4
+
+# Rate of transmute procs
+transmuteRate = 1.4
+
+ghostIronOre = 10
+ghostIronBar = 20
+spiritOfHarmony = 150
+
+riddleOfSteel = ( ((ghostIronBar * 10) / transmuteRate ) + (spiritOfHarmony * 3) ) 

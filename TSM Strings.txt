@@ -1,0 +1,51 @@
+# Instance of a price string for a given item. Created by linking the item ingame. Gives double the cost.
+    /tsm price [Royal Quartz Loop of the Aurora] dbmarket * 2
+
+# Instance of a particular string used in a price costing
+    dbmarket(i:152875)
+
+# Calculating the expected value from a disenchant
+    0.85*(dbmarket(i:152875) * 4) + 0.15*1.5(dbmarket(i:152875))    
+
+# Setting a scalar value against the maximum value of a group of items, rather than just the average.
+# Used this operation in bfa's 310 rings crafting cost; average would be weighted towards the cheaper rings, which we invariably end up disenchanting a propotion of. Second string is expulsom crafting cost
+    0.66*(max(dbmarket(i:154123), dbmarket(i:154120), dbmarket(i:154122), dbmarket(i:154121), dbmarket(i:151124), dbmarket(i:154125))) + (dbmarket(i:152576) * 52) + 50g
+
+
+
+
+### TSM - Built-in Pricing Sources ###
+
+/tsm sources - check sources in-game as these sources are just the ones mentioned in the API.
+
+    avgBuy (Avg Buy Price)
+    avgSell (Avg Sell Price)
+    Crafting (Crafting Cost)
+    DBGlobalHistorical (AuctionDB - Global Historical Price)
+    DBGlobalMarketAvg (AuctionDB - Global Market Value Average)
+    DBGlobalMinBuyoutAvg (AuctionDB - Global Minimum Buyout Average)
+    DBGlobalSaleAvg (AuctionDB - Global Sale Average)
+    DBHistorical (AuctionDB - Historical Price)
+    DBMarket (AuctionDB - Market Value)
+    DBMinBuyout (AuctionDB - Minimum Buyout)
+    DBRegionHistorical (AuctionDB - Region Historical Price)
+    DBRegionMarketAvg (AuctionDB - Region Market Value Average)
+    DBRegionMinBuyoutAvg (AuctionDB - Region Minimum Buyout Average)
+    DBRegionSaleAvg (AuctionDB - Region Sale Average)
+    Destroy (Destroy Value)
+    matPrice (Crafting Material Cost)
+    maxBuy (Max Buy Price)
+    maxSell (Max Sell Price)
+    VendorBuy (Buy from Vendor)
+    VendorSell (Sell to Vendor)
+
+
+
+
+### Custom Calculations ###
+
+# Crafting cost of an explusom
+
+    Logic for scrapper returns: (100 * 0.125) + (12.5 * 0.125) + (1.5625 * 0.125) + (0.195 * 0.125) - etc
+        round(60 * 14.2) Tidespray Linen = 52 tidespray linen
+    dbmarket([Tidespray Linen] * 52) + 50g

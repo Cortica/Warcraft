@@ -1,0 +1,4 @@
+TSM
+Undermine Journal
+wowdb
+    As on end of 2016 had a JSON API which can return txt/sqlite3 for item name, itemid
